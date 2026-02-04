@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   // ... existing settings
-  url: 'https://raef-ben-jeddou.github.io', // Use this base URL first
+  url: 'https://trinovaq.io', // Use this base URL first
   baseUrl: '/trinovaq-docs/', // If your repo name is 'trinovaq-docs'
   
   // GitHub Deployment Config
