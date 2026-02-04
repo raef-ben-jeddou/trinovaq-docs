@@ -1,12 +1,5 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -16,9 +9,10 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  
+  // 1. This controls the tab icon. Make sure you replace this file in static/img/
+  favicon: 'img/logo.ico', 
 
-  // GitHub Pages deployment config (we'll use this later)
   organizationName: 'raef-ben-jeddou', 
   projectName: 'trinovaq-docs',
   deploymentBranch: 'gh-pages',
@@ -27,19 +21,47 @@ const config = {
   presets: [
     [
       'classic',
-      {
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Remove this if you don't want a "Edit this page" link
+          // 2. This removes the "Welcome" landing page and puts docs at the root
+          routeBasePath: '/', 
+          sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/raef-ben-jeddou/trinovaq-docs/edit/main/',
         },
+        blog: false, // Disabling blog for now to keep it clean
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
-      },
+      }),
     ],
   ],
+
+  // 3. THIS SECTION WAS MISSING. It controls the Navbar and Logo.
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        title: 'TrinovaQ Specs', // Text next to logo (optional, delete line to remove)
+        logo: {
+          alt: 'TrinovaQ Studio Logo',
+          src: 'img/logo.jpg',         // Ensure you uploaded logo.png to static/img/
+          href: 'https://trinovaq.io', // <--- This redirects clicking the logo to your main site
+          target: '_self',             // Opens in the same tab
+        },
+        items: [
+          // You can add more links here later (e.g., GitHub repo link)
+        ],
+      },
+      footer: {
+        style: 'dark',
+        copyright: `Copyright © ${new Date().getFullYear()} TrinovaQ Studio.`,
+      },
+      prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+      },
+    }),
 };
-module.exports = config;
 
 export default config;
