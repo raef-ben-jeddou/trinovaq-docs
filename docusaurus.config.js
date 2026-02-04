@@ -55,7 +55,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} TrinovaQ Studio.`,
+        copyright: `Copyright © ${new Date().getFullYear()} TrinovaQ`,
       },
       prism: {
         theme: prismThemes.github,
