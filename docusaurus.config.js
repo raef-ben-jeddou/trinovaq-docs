@@ -10,16 +10,35 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  // ... existing settings
-  url: 'https://trinovaq.io', // Use this base URL first
-  baseUrl: '/trinovaq-docs/', // If your repo name is 'trinovaq-docs'
-  
-  // GitHub Deployment Config
+  title: 'TrinovaQ Studio',
+  tagline: 'Automotive Safety & Compliance IDE',
+  url: 'https://trinovaq.io',
+  baseUrl: '/docs/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+
+  // GitHub Pages deployment config (we'll use this later)
   organizationName: 'raef-ben-jeddou', 
-  projectName: 'trinovaq-docs', // MUST match your GitHub repo name exactly
+  projectName: 'trinovaq-docs',
   deploymentBranch: 'gh-pages',
-  trailingSlash: false,
-  // ...
+  trailingSlash: false,  
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Remove this if you don't want a "Edit this page" link
+          editUrl: 'https://github.com/raef-ben-jeddou/trinovaq-docs/edit/main/',
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      },
+    ],
+  ],
 };
 module.exports = config;
 
