@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'TrinovaQ Studio',
   tagline: 'Automotive Safety & Compliance IDE',
-  url: 'https://trinovaq.io',
+  url: 'https://docs.trinovaq.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
