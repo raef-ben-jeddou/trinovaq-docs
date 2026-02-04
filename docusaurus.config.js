@@ -13,7 +13,7 @@ const config = {
   title: 'TrinovaQ Studio',
   tagline: 'Automotive Safety & Compliance IDE',
   url: 'https://trinovaq.io',
-  baseUrl: '/docs/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
