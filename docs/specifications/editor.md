@@ -1,32 +1,77 @@
 ---
 id: editor-specs
-title: Editor & Language Support
+title: Editor & Language Support — Specifications
 sidebar_label: Editor Specs
 ---
 
-# Code Editing & Language Support
+# Editor & Language Support — Specifications
+
+This page contains the formal feature specifications for the TrinovaQ Studio code editor and language support subsystem. For usage instructions and examples, see [Code Editor](../features/code-editor).
+
+---
 
 ## Overview
-The editor core is built on the Monaco Editor engine (VS Code), providing industry-standard performance, keybindings, and IntelliSense. It features a heuristic engine to auto-detect languages and a specialized snippet library for automotive use cases.
 
-## Requirements Specification
+The editor provides an industry-standard code editing experience for C and Rust development, with extensions for automotive embedded software workflows. It supports automatic language detection, a curated snippet library, and seamless integration with the static analysis and build pipeline.
 
-| ID | Feature Name | Description | Implementation Detail |
-| :--- | :--- | :--- | :--- |
-| **TRQ-EDT-001** | **Hybrid Language Detection** | The system shall automatically detect the active language (`c` or `rust`) based on code content heuristics. | Scans first 500 chars for keywords: `#include`, `printf` (C) vs `fn main`, `println!` (Rust). |
-| **TRQ-EDT-002** | **Keyboard Shortcuts** | Critical build and analysis actions must be accessible via standard shortcuts. | `F5`: Compile<br />Ctrl+Enter: Scan Quality<br />Ctrl+S: Save File<br />Ctrl+O: Open File. |
-| **TRQ-EDT-003** | **Monaco Integration** | The editor shall support syntax highlighting, minimap (disabled by default), and auto-formatting. | Configured via `monaco-editor-webpack-plugin` for C, C++, and JSON. |
+---
+
+## Feature Specifications
+
+| ID | Feature | Description |
+|---|---|---|
+| **TRQ-EDT-001** | **Automatic Language Detection** | The editor automatically identifies whether the active file is C or Rust, and applies the appropriate syntax highlighting, analysis, and compilation pathway. Detection is based on file extension and code content analysis. |
+| **TRQ-EDT-002** | **Keyboard Shortcuts** | Core build and analysis actions are accessible via standard keyboard shortcuts: `F5` (Compile), `Ctrl+Enter` (Scan Quality), `Ctrl+S` (Save), `Ctrl+O` (Open), `Ctrl+Shift+P` (Command Palette). |
+| **TRQ-EDT-003** | **Monaco Editor Integration** | The editor is built on a professional-grade editor engine, supporting syntax highlighting, code folding, bracket matching, find/replace, minimap, and IntelliSense-style auto-completion for C, C++, and JSON. |
+| **TRQ-EDT-004** | **Multi-Tab Management** | Multiple source files can be open simultaneously as editor tabs. Each tab shows unsaved-change indicators. The editor warns before closing unsaved files. |
+| **TRQ-EDT-005** | **Theming** | The editor applies the active application theme (dark or light), with consistent styling across all UI elements. |
+| **TRQ-EDT-006** | **Auto-Save** | The editor can automatically save files after a configurable idle period, configurable per project. |
+
+---
 
 ## Automotive Snippets Library
-The editor includes `registerAutomotiveSnippets` which provides the following intelligent templates:
 
-| Snippet Trigger | generated Code Structure | Purpose |
-| :--- | :--- | :--- |
-| `header_guard` | `#ifndef NAME_H ... #endif` | Prevents recursive inclusion loops. |
-| `for_safe` | `for (i=0; i<SIZE; i++) { if (i>=SIZE) break; }` | Defensive loop with bounds checking. |
-| `can_frame` | `typedef struct { id, dlc, data[8] }` | Standard CAN Bus message frame structure. |
-| `isr_handler` | `void __attribute__((interrupt))` | Interrupt Service Routine template with flag clearing. |
-| `debounce_switch` | `switch (state) { CASE IDLE... }` | State machine for robust button signal debouncing. |
-| `circular_buffer` | `struct RingBuffer_t` | Safe ring buffer implementation for UART/CAN streams. |
-| `fixed_point_math` | Macros: `FP_MULT`, `FP_DIV` | Q15.16 Fixed-Point math for FPU-less microcontrollers. |
-| `state_machine` | `enum AppState_t`, `switch(current_state)` | Standard Finite State Machine (FSM) skeleton. |
+The editor includes a curated snippet library for automotive embedded development patterns. Snippets are accessed by typing the trigger word and pressing `Tab`.
+
+| ID | Trigger | Generated Pattern | Purpose |
+|---|---|---|---|
+| **TRQ-SNP-001** | `header_guard` | `#ifndef` / `#define` / `#endif` block | Prevents recursive header inclusion |
+| **TRQ-SNP-002** | `for_safe` | Bounds-checked `for` loop | Defensive loop with explicit guard condition |
+| **TRQ-SNP-003** | `can_frame` | `CAN_Frame_t` struct | Standard CAN bus message structure |
+| **TRQ-SNP-004** | `isr_handler` | Interrupt Service Routine with attribute annotation | ISR template with interrupt flag handling |
+| **TRQ-SNP-005** | `debounce_switch` | State machine for button debouncing | Robust switch debounce implementation |
+| **TRQ-SNP-006** | `circular_buffer` | `RingBuffer_t` struct | Safe ring buffer for UART/CAN streams |
+| **TRQ-SNP-007** | `fixed_point_math` | `FP_MULT`, `FP_DIV` macros | Q15.16 fixed-point arithmetic for FPU-less MCUs |
+| **TRQ-SNP-008** | `state_machine` | FSM enum and switch skeleton | Finite State Machine implementation template |
+
+---
+
+## Language Support Matrix
+
+| Feature | C | Rust |
+|---|---|---|
+| Syntax highlighting | ✓ | ✓ |
+| Auto-completion | ✓ | ✓ |
+| Code folding | ✓ | ✓ |
+| Static analysis | ✓ (MISRA C:2012) | ✓ (rustc diagnostics) |
+| Compilation | ✓ (GCC) | ✓ (rustc) |
+| Snippet library | ✓ | — |
+| Automotive snippets | ✓ | — |
+
+---
+
+## Non-Functional Requirements
+
+| ID | Requirement |
+|---|---|
+| **TRQ-EDT-NF-001** | The editor must handle files up to 10,000 lines without degradation of responsiveness |
+| **TRQ-EDT-NF-002** | Syntax highlighting must apply within 500 ms of file opening |
+| **TRQ-EDT-NF-003** | The editor undo/redo stack must not be invalidated by applied code fixes |
+
+---
+
+## Related Pages
+
+- [Code Editor](../features/code-editor) — User guide with examples
+- [Static Analysis](../features/static-analysis) — Analysis integration with the editor
+- [Automation & Productivity](../automation/productivity) — Auto-save and productivity features
