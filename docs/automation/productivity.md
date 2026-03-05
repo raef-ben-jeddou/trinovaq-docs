@@ -43,7 +43,7 @@ For common, well-understood MISRA violations, TrinovaQ Studio can propose and ap
 
 ### How It Works
 
-1. Run a static analysis scan (`Ctrl+Enter`)
+1. Run a static analysis scan (`Ctrl+Shift+I`)
 2. In the **Problems** panel, look for findings with a **Show Fix** button
 3. Click **Show Fix** to see the suggested change in a diff view
 4. Click **Apply Fix** to accept the change
@@ -73,7 +73,7 @@ The snippet library accelerates writing common embedded patterns. See the [Code 
 
 **Quick access:**
 - Type a trigger word in a `.c` file and press `Tab`
-- Common triggers: `can_frame`, `isr_handler`, `state_machine`, `circular_buffer`, `for_safe`
+- Available triggers: `header_guard`, `for_safe`, `fsm_secure`
 
 ---
 
@@ -85,11 +85,7 @@ The integrated terminal provides quick access to common actions without leaving 
 |---|---|
 | `scan` | Run static analysis on the active file |
 | `compile` | Build the active file |
-| `flash` | Flash the compiled binary to connected hardware |
-| `docs` / `man` | Open this documentation in the browser |
 | `help` | Show available terminal commands |
-| `snippets` | List available snippet triggers |
-| `hex <number>` | Convert a decimal number to hexadecimal |
 | `cls` / `clear` | Clear the terminal display |
 
 ---
@@ -102,11 +98,11 @@ All core actions are accessible via keyboard shortcuts to support a fast, keyboa
 |---|---|
 | `Ctrl+S` | Save |
 | `Ctrl+O` | Open folder/file |
-| `F5` | Compile |
-| `Ctrl+Enter` | Scan Quality (static analysis) |
-| `Ctrl+Shift+P` | Command palette |
+| `Ctrl+B` | Compile |
+| `Ctrl+Shift+I` | Scan Quality (static analysis) |
 | `Ctrl+F` | Find in file |
 | `Ctrl+H` | Find and replace |
+| `Ctrl+Q` | Toggle line comment |
 | `Ctrl+Z` | Undo |
 | `Ctrl+Y` | Redo |
 

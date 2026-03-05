@@ -26,24 +26,22 @@ In the context of TrinovaQ Studio, TARA data is used to:
 
 TrinovaQ Studio imports TARA data from a **CSV file** exported from your TARA tool (e.g., from a spreadsheet or a dedicated TARA tool like PREEvision, YAKINDU, or a custom template).
 
-### Required CSV Format
+### CSV Format and Column Mapping
 
-The TARA CSV file must include the following columns:
+Your CSV file can use any column names. When importing, TrinovaQ Studio presents a **column mapping UI** where you specify which column in your CSV corresponds to each of the following fields:
 
-| Column Name | Description | Example |
+| Field | Description | Example Value |
 |---|---|---|
-| `file` | Source file path (relative to project root) | `src/can_driver.c` |
-| `threat_id` | Unique identifier for the threat | `THR-CAN-001` |
-| `threat_name` | Short name of the threat | `CAN Bus Injection` |
-| `attack_vector` | How the threat is realized | `Physical, adjacent network` |
-| `impact` | Potential impact category | `Safety, Privacy` |
-| `likelihood` | Likelihood of exploitation | `High, Medium, Low` |
-| `risk_level` | Assessed risk level | `Critical, High, Medium, Low` |
-| `cybersecurity_goal` | Associated cybersecurity goal | `Prevent unauthorized CAN frame injection` |
+| **File** | Source file path (relative to project root) | `src/can_driver.c` |
+| **Threat ID** | Unique identifier for the threat | `THR-CAN-001` |
+| **Threat Name** | Short name of the threat | `CAN Bus Injection` |
+| **Attack Vector** | How the threat is realized | `Physical, adjacent network` |
+| **Impact** | Potential impact category | `Safety, Privacy` |
+| **Likelihood** | Likelihood of exploitation | `High, Medium, Low` |
+| **Risk Level** | Assessed risk level | `Critical, High, Medium, Low` |
+| **Cybersecurity Goal** | Associated cybersecurity goal | `Prevent unauthorized CAN frame injection` |
 
-:::tip
-Column names are case-insensitive and can appear in any order. Additional columns in the CSV are accepted and stored for reference.
-:::
+This flexible mapping means you can import TARA exports from any tool without reformatting your spreadsheet — simply map your existing column headers to the fields above during import.
 
 ---
 
@@ -74,10 +72,7 @@ Once TARA data is imported, you can view threats associated with any source file
 
 ### During Code Review
 
-When a source file has associated TARA threats:
-- The **TARA indicator** appears in the editor status bar
-- Hovering over the indicator shows a summary of threats linked to that file
-- Click the indicator to open the TARA panel filtered to that file's threats
+When reviewing a source file, open the **TARA** panel and filter by file name to see all threats associated with that file. This gives you the cybersecurity context needed to assess whether code changes introduce new risk.
 
 ---
 

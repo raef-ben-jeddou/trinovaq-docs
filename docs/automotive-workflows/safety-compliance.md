@@ -38,7 +38,7 @@ See [Policy Configuration](../configuration/policy) for the full format.
 
 During software development:
 
-- Run static analysis regularly (`Ctrl+Enter` or `scan` in the terminal)
+- Run static analysis regularly (`Ctrl+Shift+I` or `scan` in the terminal)
 - Address violations as they arise — early resolution is cheaper than late-stage remediation
 - Use the **Automotive Snippets** library to write patterns that are inherently MISRA-friendly
 

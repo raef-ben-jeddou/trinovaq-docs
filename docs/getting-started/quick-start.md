@@ -38,22 +38,20 @@ TrinovaQ Studio includes a library of automotive-specific code templates. In a `
 
 | Trigger | What it generates |
 |---|---|
-| `can_frame` | A standard CAN bus message frame struct |
-| `isr_handler` | An Interrupt Service Routine template |
-| `circular_buffer` | A ring buffer implementation for UART/CAN streams |
-| `for_safe` | A bounds-checked loop pattern |
-| `state_machine` | A Finite State Machine skeleton |
 | `header_guard` | A standard `#ifndef` include guard |
+| `for_safe` | A bounds-checked loop pattern |
+| `fsm_secure` | A secure Finite State Machine skeleton |
 
 **Example:**
-Type `can_frame` and press `Tab` in a `.c` file to insert:
+Type `header_guard` and press `Tab` in a `.c` file to insert:
 
 ```c
-typedef struct {
-    uint32_t id;
-    uint8_t  dlc;
-    uint8_t  data[8];
-} CAN_Frame_t;
+#ifndef MODULE_NAME_H
+#define MODULE_NAME_H
+
+/* Your declarations here */
+
+#endif /* MODULE_NAME_H */
 ```
 
 ---
@@ -75,7 +73,7 @@ The selected target affects how RAM and Flash usage metrics are calculated durin
 ## Step 4: Save and Run Static Analysis
 
 1. Press `Ctrl+S` to save the active file
-2. Press `Ctrl+Enter` to run a static analysis scan, or use the **Build → Scan Quality** menu option
+2. Press `Ctrl+Shift+I` to run a static analysis scan, or use the **Build → Scan Quality** menu option
 
 The analysis runs in the background. When complete:
 
@@ -104,7 +102,7 @@ In the **Problems** panel, each issue shows:
 
 ## Step 5: Compile Your Code
 
-1. Press `F5` to compile, or select **Build → Compile**
+1. Press `Ctrl+B` to compile, or select **Build → Compile**
 2. The compilation output appears in the **Output** tab of the bottom panel
 3. After a successful build, the Dashboard shows:
    - **RAM Usage**: Estimated memory consumption vs. target limit
@@ -122,7 +120,7 @@ If you have a supported board connected via USB:
 1. Connect your board to a USB port
 2. In the **Hardware** section, select the correct **COM port** from the dropdown
 3. Select the **Baud Rate** (typically `115200` for modern boards)
-4. Click **Flash** or type `flash` in the terminal
+4. Click **Flash** in the Dashboard
 
 Flash progress is shown in real time. After completion, open the **Serial Monitor** tab to see output from your device.
 
@@ -135,9 +133,8 @@ The Dashboard provides a live summary of your project's safety posture:
 | Metric | Description |
 |---|---|
 | **Safety Score** | Overall MISRA compliance percentage |
-| **RAM Usage** | Estimated memory use vs. target limit |
-| **Flash Usage** | Binary size vs. target Flash capacity |
-| **Complexity** | Cyclomatic complexity estimate |
+| **RAM Usage** | Memory use vs. target limit (updated after each compile) |
+| **Flash Usage** | Binary size vs. target Flash capacity (updated after each compile) |
 | **Issue Count** | Total static analysis findings |
 
 ---

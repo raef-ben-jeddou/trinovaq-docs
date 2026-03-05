@@ -15,8 +15,7 @@ The Serial Monitor is available in the **Serial** tab of the bottom panel. It pr
 
 - Auto-discovery of available COM ports
 - Configurable baud rate
-- Live data stream display
-- Command sending to the target device
+- Live data stream display from the connected device
 
 ---
 
@@ -45,6 +44,7 @@ Choose the baud rate that matches your firmware's UART configuration:
 |---|---|
 | **9600** | Low-speed sensors, legacy hardware |
 | **115200** | Standard debugging and data logging |
+| **500000** | High-speed data streams |
 
 :::tip
 Make sure the baud rate configured in your firmware matches the selection in the Serial Monitor. A mismatch will result in garbled output.
@@ -58,23 +58,7 @@ Click **Connect**. The Serial Monitor begins displaying incoming data from the d
 
 ## Viewing Data
 
-Once connected, the Serial Monitor displays:
-
-- **Incoming data**: All bytes received from the device are shown as text in the display area
-- **Timestamps**: Optional per-line timestamps for correlating events with code execution
-- **Scroll behavior**: The display auto-scrolls to the latest data; click anywhere to pause auto-scroll
-
----
-
-## Sending Data
-
-To send a command or string to the device:
-
-1. Click the input field at the bottom of the Serial Monitor
-2. Type your command or data
-3. Press `Enter` to send
-
-The sent data is echoed in the display area for reference.
+Once connected, the Serial Monitor displays all bytes received from the device as text in the display area. The view auto-scrolls to the latest data.
 
 ---
 

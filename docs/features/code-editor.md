@@ -56,10 +56,6 @@ The editor provides:
 - **Code folding**: Collapse functions, structs, and blocks for better navigation
 - **Find and Replace**: `Ctrl+H` opens the find/replace panel; `Ctrl+F` for find-only
 
-### Minimap
-
-A minimap (scrollable code overview) is available but disabled by default. Enable it in **Settings → Editor → Show Minimap**.
-
 ---
 
 ## Keyboard Shortcuts
@@ -68,15 +64,17 @@ A minimap (scrollable code overview) is available but disabled by default. Enabl
 |---|---|
 | `Ctrl+S` | Save the active file |
 | `Ctrl+O` | Open a file or folder |
-| `F5` | Compile the active file |
-| `Ctrl+Enter` | Run static analysis (Scan Quality) |
+| `Ctrl+B` | Compile the active file |
+| `Ctrl+Shift+I` | Run static analysis (Scan Quality) |
 | `Ctrl+F` | Find in file |
 | `Ctrl+H` | Find and replace |
 | `Ctrl+Z` | Undo |
-| `Ctrl+Y` / `Ctrl+Shift+Z` | Redo |
-| `Ctrl+/` | Toggle line comment |
+| `Ctrl+Y` | Redo |
+| `Ctrl+Q` | Toggle line comment |
+| `Ctrl+G` | Go to line |
 | `Alt+Up` / `Alt+Down` | Move line up/down |
-| `Ctrl+Shift+P` | Open command palette |
+
+For the full keyboard shortcut reference, see [Keyboard Shortcuts](keyboard-shortcuts).
 
 ---
 
@@ -116,64 +114,8 @@ for (i = 0U; i < SIZE; i++) {
 }
 ```
 
-#### `can_frame`
-A standard CAN bus message frame structure:
-
-```c
-typedef struct {
-    uint32_t id;
-    uint8_t  dlc;
-    uint8_t  data[8];
-} CAN_Frame_t;
-```
-
-#### `isr_handler`
-An Interrupt Service Routine template with proper attribute annotation and flag clearing:
-
-```c
-void __attribute__((interrupt)) IRQ_Handler(void) {
-    /* Clear interrupt flag first */
-    /* Handle interrupt */
-}
-```
-
-#### `circular_buffer`
-A safe ring buffer implementation suitable for UART and CAN data streams:
-
-```c
-typedef struct {
-    uint8_t  buffer[BUFFER_SIZE];
-    uint32_t head;
-    uint32_t tail;
-    uint32_t count;
-} RingBuffer_t;
-```
-
-#### `fixed_point_math`
-Q15.16 fixed-point arithmetic macros for microcontrollers without an FPU:
-
-```c
-#define FP_SCALE  65536
-#define FP_MULT(a, b)  (((int64_t)(a) * (b)) >> 16)
-#define FP_DIV(a, b)   (((int64_t)(a) << 16) / (b))
-```
-
-#### `debounce_switch`
-A state machine for robust button debouncing:
-
-```c
-typedef enum { IDLE, DEBOUNCE, PRESSED } SwitchState_t;
-
-SwitchState_t state = IDLE;
-switch (state) {
-    case IDLE:     /* check raw pin */ break;
-    case DEBOUNCE: /* wait period */  break;
-    case PRESSED:  /* confirmed */    break;
-}
-```
-
-#### `state_machine`
-A Finite State Machine (FSM) skeleton:
+#### `fsm_secure`
+A secure Finite State Machine (FSM) skeleton with a defensive default case:
 
 ```c
 typedef enum {
@@ -198,7 +140,7 @@ switch (current_state) {
 
 ## Viewing Static Analysis Results in the Editor
 
-When you run a static analysis scan (`Ctrl+Enter`), the results are overlaid directly in the editor:
+When you run a static analysis scan (`Ctrl+Shift+I`), the results are overlaid directly in the editor:
 
 - **Inline markers**: Red or yellow underlines on problematic code
 - **Gutter icons**: Warning/error icons in the line number gutter

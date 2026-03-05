@@ -34,9 +34,9 @@ The build system manages the compilation of C and Rust source code into executab
 
 | Target | Architecture | RAM Limit | Flash Limit | Flash Protocol |
 |---|---|---|---|---|
-| **Arduino Uno** | AVR (8-bit) | 2 KB | 32 KB | Arduino ISP via serial |
-| **STM32 F103** | ARM Cortex-M3 (32-bit) | 20 KB | 128 KB | STM32 bootloader (UART) |
-| **ESP32** | Xtensa dual-core (32-bit) | 512 KB | 4 MB | esptool via USB serial |
+| **Arduino Uno** | AVR (8-bit) | 2 KB | 32 KB | avrdude via USB serial (arduino programmer) |
+| **STM32 F103** | ARM Cortex-M3 (32-bit) | 20 KB | 128 KB | OpenOCD via ST-Link debug adapter |
+| **ESP32** | Xtensa dual-core (32-bit) | 512 KB | 4 MB | Not yet supported |
 
 ---
 

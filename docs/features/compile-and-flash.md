@@ -43,7 +43,7 @@ TrinovaQ Studio automatically detects C (`.c`) or Rust (`.rs`) files and selects
 
 | Method | Action |
 |---|---|
-| **Keyboard shortcut** | `F5` |
+| **Keyboard shortcut** | `Ctrl+B` |
 | **Menu** | **Build → Compile** |
 | **Terminal** | Type `compile` |
 
@@ -104,7 +104,7 @@ After a successful build, you can deploy the binary to a connected hardware targ
 1. Connect your board to a USB port
 2. In the **Hardware** section, select the **COM port** from the dropdown (use **Refresh** if the port doesn't appear)
 3. Select the appropriate **Baud Rate** (commonly `115200`)
-4. Click **Flash** in the Dashboard, or type `flash` in the terminal
+4. Click **Flash** in the Dashboard
 5. A progress indicator shows flashing status in real time
 6. Upon completion, a success or error message is shown
 
@@ -112,9 +112,13 @@ After a successful build, you can deploy the binary to a connected hardware targ
 
 | Target | Flash Method |
 |---|---|
-| **Arduino Uno** | Arduino ISP protocol via serial |
-| **STM32 F103** | STM32 bootloader (UART) |
-| **ESP32** | esptool over USB serial |
+| **Arduino Uno** | avrdude via USB serial (arduino programmer) |
+| **STM32 F103** | OpenOCD via ST-Link debug adapter |
+| **ESP32** | Not yet supported |
+
+:::note
+Flashing the STM32 F103 requires an **ST-Link** debug adapter connected to the target board's SWD/JTAG header — UART bootloader is not used.
+:::
 
 ### Binary Integrity
 
@@ -138,12 +142,12 @@ The following sequence represents the recommended build and deploy cycle:
        │
        ▼
 ┌──────────────┐
-│ Scan Quality │  Ctrl+Enter
+│ Scan Quality │  Ctrl+Shift+I
 └──────┬───────┘
        │ Review issues / create deviations
        ▼
 ┌──────────────┐
-│   Compile    │  F5
+│   Compile    │  Ctrl+B
 └──────┬───────┘
        │ Check RAM/Flash metrics
        ▼

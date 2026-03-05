@@ -19,9 +19,13 @@ const sidebars = {
       label: 'Core Capabilities',
       items: [
         'features/code-editor',
+        'features/keyboard-shortcuts',
         'features/static-analysis',
+        'features/code-fixes',
         'features/compile-and-flash',
         'features/serial-monitor',
+        'features/hardware-registers',
+        'features/terminal',
       ],
     },
 

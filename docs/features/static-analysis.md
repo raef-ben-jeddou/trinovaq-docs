@@ -15,7 +15,7 @@ There are three ways to trigger a static analysis scan:
 
 | Method | Action |
 |---|---|
-| **Keyboard shortcut** | Press `Ctrl+Enter` |
+| **Keyboard shortcut** | Press `Ctrl+Shift+I` |
 | **Menu** | **Build → Scan Quality** |
 | **Terminal** | Type `scan` in the integrated terminal |
 
@@ -110,27 +110,6 @@ TrinovaQ Studio maps static analysis findings to concrete automotive risks, help
 | Implicit function declaration | **Runtime Risk**: Dangerous return type assumptions | Add the appropriate `#include` or prototype |
 | `unsafe` block (Rust) | **Memory Corruption**: Bypasses borrow checker safety | Document safety invariants in comments |
 | Banned function usage (e.g., `gets`, `strcpy`) | **Security**: Risk of buffer overrun | Replace with safe alternatives (`fgets`, `strncpy`) |
-
----
-
-## Metrics Dashboard
-
-In addition to per-finding analysis, the Dashboard shows real-time metrics derived from the scan:
-
-### RAM Usage Estimate
-
-An estimate of stack memory consumption based on variable declarations found in the code. This is compared against the target hardware's RAM limit.
-
-### Cyclomatic Complexity
-
-An estimate of code complexity based on the number of branching constructs (`if`, `for`, `while`, `switch`, `case`). Higher complexity correlates with higher test burden and fault risk.
-
-| Complexity Range | Meaning |
-|---|---|
-| 1–10 | Simple, low risk |
-| 11–20 | Moderate complexity |
-| 21–50 | High complexity — consider refactoring |
-| 50+ | Very high — strong refactoring recommendation |
 
 ---
 

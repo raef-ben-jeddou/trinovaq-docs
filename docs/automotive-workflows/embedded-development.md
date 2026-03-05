@@ -96,7 +96,7 @@ For Rust embedded development:
 
 Run static analysis regularly throughout development — not just before release:
 
-1. Press `Ctrl+Enter` after completing each logical section of code
+1. Press `Ctrl+Shift+I` after completing each logical section of code
 2. Review findings in the **Problems** panel immediately
 3. Fix genuine violations before continuing
 4. For intentional exceptions, create a **Deviation record** with justification
@@ -131,7 +131,7 @@ Reviewers with the **Safety Engineer** role can approve pending deviations direc
 ### Compile
 
 1. Select the correct target hardware in the Dashboard
-2. Press `F5` to compile
+2. Press `Ctrl+B` to compile
 3. Review RAM and Flash usage metrics — ensure both are within target limits
 4. Address any compiler warnings that represent MISRA violations
 

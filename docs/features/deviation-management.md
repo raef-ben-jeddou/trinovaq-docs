@@ -62,7 +62,7 @@ Deviation management enforces role-based access control:
 
 ### From the Problems Panel
 
-1. Run a static analysis scan (`Ctrl+Enter`)
+1. Run a static analysis scan (`Ctrl+Shift+I`)
 2. In the **Problems** panel, locate the finding you want to document
 3. Right-click the finding and select **Create Deviation**, or click the **Deviation** button next to the finding
 4. The **Deviation Dialog** opens

@@ -23,18 +23,15 @@ Settings are organized into categories accessible via tabs.
 
 ---
 
-## Appearance
+## Editor Tab
+
+The **Editor** tab contains appearance and behavior settings for the code editor.
 
 ### Theme
 
 | Setting | Options | Description |
 |---|---|---|
-| **Theme** | `trinovaq-dark` (default), `light` | Editor and UI color scheme |
-
-To change the theme:
-1. Open **Settings → Appearance**
-2. Select a theme from the dropdown
-3. The change applies immediately
+| **Color Theme** | `trinovaq-dark` (default), `lab-light` | Editor and UI color scheme |
 
 ### Font Size
 
@@ -42,9 +39,15 @@ To change the theme:
 |---|---|---|---|
 | **Editor Font Size** | `14` | 10–24 | Font size in the code editor (pt) |
 
+### Keyboard Shortcuts Reference
+
+The Editor tab includes an expandable **Keyboard Shortcuts** panel listing all available shortcuts. See [Keyboard Shortcuts](../features/keyboard-shortcuts) for the full reference.
+
 ---
 
-## Editor
+## Project Tab
+
+The **Project** tab contains per-project configuration options.
 
 ### Auto-Save
 
@@ -55,23 +58,7 @@ To change the theme:
 
 Auto-save is project-scoped — it can be overridden per project in `.trinovaq.json`.
 
-### Minimap
-
-| Setting | Default | Description |
-|---|---|---|
-| **Show Minimap** | `false` | Display a zoomed-out overview panel on the right side of the editor |
-
-### Other Editor Preferences
-
-| Setting | Default | Description |
-|---|---|---|
-| **Word Wrap** | `off` | Wrap long lines in the editor |
-| **Tab Size** | `4` | Number of spaces per indent level |
-| **Render Whitespace** | `none` | Show whitespace characters (none, boundary, all) |
-
 ---
-
-## Toolchain
 
 ### Target Hardware
 
@@ -82,6 +69,12 @@ The target hardware is set per-project in `.trinovaq.json`. The Settings dialog 
 | **Arduino Uno** | AVR | 2 KB | 32 KB |
 | **STM32 F103** | ARM Cortex-M3 | 20 KB | 128 KB |
 | **ESP32** | Xtensa | 512 KB | 4 MB |
+
+---
+
+## Tools Tab
+
+The **Tools** tab shows the detection status of each required tool and allows configuring custom tool paths.
 
 ### Tool Paths
 
@@ -96,7 +89,7 @@ Leave these empty to use the bundled tools.
 
 ### Tool Availability
 
-The **Tool Availability** section shows the detection status of each tool:
+The Tools tab shows the detection status of each tool:
 
 | Tool | Expected Status |
 |---|---|
@@ -111,23 +104,6 @@ If a tool shows as not detected:
 
 ---
 
-## Hardware / Serial
-
-| Setting | Default | Description |
-|---|---|---|
-| **Default Baud Rate** | `115200` | The baud rate pre-selected in the Serial Monitor |
-
-Serial port selection is done live in the Serial Monitor panel — it is not stored in settings.
-
----
-
-## Account
-
-| Option | Description |
-|---|---|
-| **Sign Out** | Sign out of the current account session |
-| **Account Info** | Displays the current user's email and role |
-
 ---
 
 ## Applying Settings
@@ -136,13 +112,14 @@ Most settings apply immediately. Settings that require a restart (if any) are ma
 
 ---
 
-## Project vs. Application Settings
+## Application vs. Project Settings
 
 | Setting | Scope | Where Stored |
 |---|---|---|
-| Theme | Application | Local database |
+| Color theme | Application | Local database |
 | Font size | Application | Local database |
 | Target hardware | Project | `.trinovaq.json` |
+| Language | Project | `.trinovaq.json` |
 | Auto-save | Project | `.trinovaq.json` |
 | Tool paths | Project | `.trinovaq.json` |
 | Compiler includes/defines | Project | `.trinovaq.json` |

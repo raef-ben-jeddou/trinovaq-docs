@@ -13,7 +13,7 @@ This page documents recommended practices for teams using TrinovaQ Studio in aut
 
 ### 1. Scan Early, Scan Often
 
-Run static analysis (`Ctrl+Enter`) frequently — not just before a release:
+Run static analysis (`Ctrl+Shift+I`) frequently — not just before a release:
 
 - After completing each function or module
 - Before every code review
@@ -79,7 +79,7 @@ int16_t  diff    = (int16_t)(a - b);
 
 In safety-critical embedded code, avoid `malloc`, `calloc`, `realloc`, and `free`:
 
-- Use statically-allocated buffers and ring buffers (use the `circular_buffer` snippet)
+- Use statically-allocated buffers
 - Pre-allocate all data structures at startup
 
 ### 8. Use the Automotive Snippets
@@ -87,9 +87,8 @@ In safety-critical embedded code, avoid `malloc`, `calloc`, `realloc`, and `free
 Leverage the built-in snippet library for safe, pattern-consistent code:
 
 - `for_safe` for loops with bounds checking
-- `can_frame` for CAN bus message structures
-- `isr_handler` for interrupt service routines
-- `state_machine` for FSM implementations
+- `header_guard` for include guards on all header files
+- `fsm_secure` for FSM implementations with a defensive default case
 
 ---
 

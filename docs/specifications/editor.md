@@ -21,7 +21,7 @@ The editor provides an industry-standard code editing experience for C and Rust 
 | ID | Feature | Description |
 |---|---|---|
 | **TRQ-EDT-001** | **Automatic Language Detection** | The editor automatically identifies whether the active file is C or Rust, and applies the appropriate syntax highlighting, analysis, and compilation pathway. Detection is based on file extension and code content analysis. |
-| **TRQ-EDT-002** | **Keyboard Shortcuts** | Core build and analysis actions are accessible via standard keyboard shortcuts: `F5` (Compile), `Ctrl+Enter` (Scan Quality), `Ctrl+S` (Save), `Ctrl+O` (Open), `Ctrl+Shift+P` (Command Palette). |
+| **TRQ-EDT-002** | **Keyboard Shortcuts** | Core build and analysis actions are accessible via standard keyboard shortcuts: `Ctrl+B` (Compile), `Ctrl+Shift+I` (Scan Quality), `Ctrl+S` (Save), `Ctrl+O` (Open), `Ctrl+Q` (Toggle Line Comment). |
 | **TRQ-EDT-003** | **Monaco Editor Integration** | The editor is built on a professional-grade editor engine, supporting syntax highlighting, code folding, bracket matching, find/replace, minimap, and IntelliSense-style auto-completion for C, C++, and JSON. |
 | **TRQ-EDT-004** | **Multi-Tab Management** | Multiple source files can be open simultaneously as editor tabs. Each tab shows unsaved-change indicators. The editor warns before closing unsaved files. |
 | **TRQ-EDT-005** | **Theming** | The editor applies the active application theme (dark or light), with consistent styling across all UI elements. |
@@ -37,12 +37,7 @@ The editor includes a curated snippet library for automotive embedded developmen
 |---|---|---|---|
 | **TRQ-SNP-001** | `header_guard` | `#ifndef` / `#define` / `#endif` block | Prevents recursive header inclusion |
 | **TRQ-SNP-002** | `for_safe` | Bounds-checked `for` loop | Defensive loop with explicit guard condition |
-| **TRQ-SNP-003** | `can_frame` | `CAN_Frame_t` struct | Standard CAN bus message structure |
-| **TRQ-SNP-004** | `isr_handler` | Interrupt Service Routine with attribute annotation | ISR template with interrupt flag handling |
-| **TRQ-SNP-005** | `debounce_switch` | State machine for button debouncing | Robust switch debounce implementation |
-| **TRQ-SNP-006** | `circular_buffer` | `RingBuffer_t` struct | Safe ring buffer for UART/CAN streams |
-| **TRQ-SNP-007** | `fixed_point_math` | `FP_MULT`, `FP_DIV` macros | Q15.16 fixed-point arithmetic for FPU-less MCUs |
-| **TRQ-SNP-008** | `state_machine` | FSM enum and switch skeleton | Finite State Machine implementation template |
+| **TRQ-SNP-003** | `fsm_secure` | FSM enum and switch skeleton with defensive default | Secure Finite State Machine implementation template |
 
 ---
 
